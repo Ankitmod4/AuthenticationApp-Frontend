@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './StudentDashboard.css';
 import { BackendUrl } from './Helper/Helper';
 const StudentDashboard = (props) => {

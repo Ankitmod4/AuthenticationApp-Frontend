@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BackendUrl } from './Helper/Helper';
 import './Dashboard.css'
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Dashboard = () => {
   };
  
   useEffect(() => {
-    const url = "http://localhost:8000/api/v1/FetchData";
+    const url = `${BackendUrl}/api/v1/FetchData`;
     axios.get(url)
       .then((response) => setData(response.data.data))
       .catch((error) => console.log(error));

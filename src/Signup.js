@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { BackendUrl } from './Helper/Helper';
 function Signup() {
     const navigate = useNavigate();
     const [Name, setname] = useState('');
@@ -13,7 +14,7 @@ function Signup() {
         e.preventDefault(); 
          
         try {
-            let res = await axios.post("http://localhost:8000/Api/v1/Signup", {
+            let res = await axios.post(`${BackendUrl}/Api/v1/Signup`, {
                 Name, Email, Role, Password
             });
             
@@ -21,7 +22,7 @@ function Signup() {
             setname('');
             setpassword('');
             setrole('');
-            if (res.data.success) {
+            if (res.data.success) { 
                 alert("USER CREATED");
                 navigate("/login");
             }

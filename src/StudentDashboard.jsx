@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './StudentDashboard.css';
-
+import { BackendUrl } from './Helper/Helper';
 const StudentDashboard = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState({
@@ -16,7 +16,7 @@ const StudentDashboard = (props) => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-
+ 
   const handleLogout = () => {
     localStorage.removeItem('Token');
     localStorage.removeItem('Role');

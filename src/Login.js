@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BackendUrl } from './Helper/Helper';
 
 function Login() {
   
@@ -20,7 +21,7 @@ function Login() {
          
         try {
            
-            let res = await axios.post("http://localhost:8000/Api/v1/Login", {
+            let res = await axios.post(`${BackendUrl}/Api/v1/Login`, {
                Email,  Password  
             });
              
@@ -29,7 +30,7 @@ function Login() {
            
             if (res.data.success) { 
             
-                
+                 
                
                 const token = res.data.get.Token;
                 const rol = res.data.get.Role;

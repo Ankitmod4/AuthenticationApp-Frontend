@@ -1,1 +1,1 @@
-export const BackendUrl = "https://authenticationapp-backend.onrender.com"
+export const BackendUrl = "https://authenticationapp-backend-1.onrender.com"

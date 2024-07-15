@@ -1,1 +1,1 @@
-export const BackendUrl = "https://authenticationapp-backend-3.onrender.com"
+export const BackendUrl = "https://backend-ijsrpncq2-ankitmod4s-projects.vercel.app/"

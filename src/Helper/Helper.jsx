@@ -1,1 +1,1 @@
-export const BackendUrl = "https://backend-ijsrpncq2-ankitmod4s-projects.vercel.app/"
+export const BackendUrl = "https://backend-five-rosy.vercel.app/"

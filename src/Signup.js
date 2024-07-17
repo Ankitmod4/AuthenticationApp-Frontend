@@ -67,7 +67,8 @@ function Signup() {
 />
                 </div> 
                 <div className="form-group mb-3">
-                  <label htmlFor="role">Role</label>
+                  <label htmlFor="role">Role::</label> <br />
+                  <label htmlFor='role'>Either Admin or Student</label>
                   <input
                     type="Role"
                     className="form-control"

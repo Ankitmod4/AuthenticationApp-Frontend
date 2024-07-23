@@ -23,10 +23,13 @@ function Signup() {
       setemail('');
       setname('');
       setpassword('');
-      setrole('');
+      setrole(''); 
       if (res.data.success) {
         toast.success("USER CREATED");
-        navigate("/login");
+        setTimeout(()=>{
+          navigate("/login"); 
+
+        },2000)
       }
     } catch (error) {
       console.log("Error during signup:", error);

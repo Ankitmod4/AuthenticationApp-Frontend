@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BackendUrl } from './Helper/Helper';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
   
-    const [Email, setemail] = useState(''); 
+    const [Email, setemail] = useState('');  
     const [Password, setpassword] = useState('');
     const navigate = useNavigate();
    
@@ -27,10 +29,9 @@ function Login() {
              
             setemail('');
             setpassword('');
-           
+
             if (res.data.success) { 
             
-                 
                
                 const token = res.data.get.Token;
                 const rol = res.data.get.Role;
@@ -40,30 +41,33 @@ function Login() {
                 localStorage.setItem('Token', token); 
             localStorage.setItem('Role', rol);  
                 localStorage.setItem('email', Email);
-                alert("USER Loged IN"); 
-                if (!token) {
-                    navigate('/login')
-                }
-                if (rol === 'Admin') {
-                    navigate('/Admin');
-                }
-                else { 
-                    navigate('/Student');
-                } 
-                
+                toast.success("USER Loged IN"); 
+               
+                setTimeout(() => {
+                    if (!token) {
+                        navigate('/login');
+                    } else if (rol === 'Admin') {
+                        navigate('/Admin');
+                    } else {
+                        navigate('/Student');
+                    }
+                }, 2000);
                  
-            } 
+            } else {
+                toast.error('Incorrect email or password.');
+            }
             
             
         } catch (error) {
             console.log("Error during Login:", error);
-            alert("Internal Server Error. Please try again later.");
+            toast.error("Internal Server Error. Please try again later.");
         }
     }
  
-
+ 
         return (
             <div className="container mt-5">
+                <ToastContainer />
                 <div className="row justify-content-center">
                     <div className="col-md-6">
                         <div className="card">

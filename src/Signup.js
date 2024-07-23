@@ -4,40 +4,43 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { BackendUrl } from './Helper/Helper';
-function Signup() {
-    const navigate = useNavigate();
-    const [Name, setname] = useState('');
-    const [Email, setemail] = useState(''); 
-    const [Password, setpassword] = useState('');
-    const [Role, setrole] = useState('');
-    const handleclick = async (e) => {
-        e.preventDefault(); 
-         
-        try {
-            let res = await axios.post(`${BackendUrl}/Api/v1/Signup`, {
-                Name, Email, Role, Password
-            });
-            
-            setemail('');
-            setname('');
-            setpassword('');
-            setrole('');
-            if (res.data.success) { 
-                alert("USER CREATED");
-                navigate("/login");
-            }
-        } catch (error) {
-            console.log("Error during signup:", error); 
-            alert("Internal Server Error. Please try again later.");
-        }
-        
-        
-    
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+function Signup() { 
+  const navigate = useNavigate();
+  const [Name, setname] = useState('');
+  const [Email, setemail] = useState('');
+  const [Password, setpassword] = useState('');
+  const [Role, setrole] = useState('');
+  const handleclick = async (e) => {
+    e.preventDefault();
+
+    try {
+      let res = await axios.post(`${BackendUrl}/Api/v1/Signup`, {
+        Name, Email, Role, Password
+      });
+
+      setemail('');
+      setname('');
+      setpassword('');
+      setrole('');
+      if (res.data.success) {
+        toast.success("USER CREATED");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log("Error during signup:", error);
+      toast.error("Internal Server Error. Please try again later.");
     }
- 
+
+
+
+  }
+
 
   return (
     <div className="container mt-5">
+     <ToastContainer />
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
@@ -49,32 +52,32 @@ function Signup() {
                   <input
                     type="Name"
                     className="form-control"
-                    
-                                      value={Name}
-                    onChange={(e)=>setname(e.target.value)}
+
+                    value={Name}
+                    onChange={(e) => setname(e.target.value)}
                     required
                   />
                 </div>
                 <div className="form-group mb-3">
                   <label htmlFor="email">Email address</label>
                   <input
-    type="email"
-    className="form-control"
-   
-    value={Email}
-    onChange={(e) => setemail(e.target.value)}
-    required 
-/>
-                </div> 
+                    type="email"
+                    className="form-control"
+
+                    value={Email}
+                    onChange={(e) => setemail(e.target.value)}
+                    required
+                  />
+                </div>
                 <div className="form-group mb-3">
                   <label htmlFor="role">Role::</label> <br />
                   <label htmlFor='role'>Either Admin or Student</label>
                   <input
                     type="Role"
                     className="form-control"
-                    
-                                      value={Role}
-                    onChange={(e)=>setrole(e.target.value)}
+
+                    value={Role}
+                    onChange={(e) => setrole(e.target.value)}
                     required
                   />
                 </div>
@@ -83,9 +86,9 @@ function Signup() {
                   <input
                     type="Password"
                     className="form-control"
-                    
-                                      value={Password}
-                    onChange={(e)=>setpassword(e.target.value)}
+
+                    value={Password}
+                    onChange={(e) => setpassword(e.target.value)}
                     required
                   />
                 </div>
@@ -97,7 +100,7 @@ function Signup() {
         </div>
       </div>
     </div>
-  ); 
+  );
 }
 
-export default Signup ;
+export default Signup;

@@ -29,11 +29,11 @@ function Signup() {
         setTimeout(()=>{
           navigate("/login"); 
 
-        },2000)
+        },2000) 
       }
-    } catch (error) {
+    } catch (error) { 
       console.log("Error during signup:", error);
-      toast.error("Internal Server Error. Please try again later.");
+      toast.error("INTERNAL SERVER ERROR");
     }
 
 

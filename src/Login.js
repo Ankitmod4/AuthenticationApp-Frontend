@@ -42,7 +42,7 @@ function Login() {
                 localStorage.setItem('Token', token); 
             localStorage.setItem('Role', rol);  
                 localStorage.setItem('email', Email);
-                toast.success("USER Loged IN"); 
+                toast.success("USER LOGGED IN"); 
                
                 setTimeout(() => {
                     if (!token) {
@@ -51,17 +51,17 @@ function Login() {
                         navigate('/Admin');
                     } else {
                         navigate('/Student');
-                    }
+                    } 
                 }, 2000);
                  
             } else {
-                toast.error('Incorrect email or password.');
+                toast.error('INCORRECT EMAIL AND PASSWORD');
             }
             
             
         } catch (error) {
             console.log("Error during Login:", error);
-            toast.error("Internal Server Error. Please try again later.");
+            toast.error("INTERNAL SERVER ERROR");
         }
     }
  
